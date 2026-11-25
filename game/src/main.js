@@ -252,16 +252,44 @@ function seedShot(index) {
   const chef = game.chef;
 
   if (index === 1) {
-    order('ember_noodles', 39, 54);
-    order('glass_dumplings', 24, 50);
-    order('cloud_skewers', 33, 48);
-    order('sun_broth', 12, 46);
+    order('glass_dumplings', 31, 52);
+    order('sun_broth', 26, 50);
+    order('ember_noodles', 44, 54);
+    order('cloud_skewers', 18, 47);
+    game.pans[0].item = true;
+    game.pans[0].itemId = 'glasspea';
+    game.pans[0].since = game.time - 3.2;
+    game.pans[1].item = true;
+    game.pans[1].itemId = 'cloudcap';
+    game.pans[1].since = game.time - 1.4;
+    game.plating.items = [{ id: 'glasspea', quality: 'perfect' }];
+    game.plating.dish = null;
+    game.readyPlates = ['ember_noodles', 'cloud_skewers'];
+    chef.x = 946;
+    chef.y = 522;
+    chef.facing = 'left';
+    chef.carry = [
+      { kind: 'cooked', id: 'cloudcap', quality: 'perfect' },
+      { kind: 'chopped', id: 'sunpetal' },
+    ];
+    chef.action = { kind: 'plate', until: game.time + 30, station: 'plating' };
+    game.coins = 132;
+    game.served = 9;
+    game.wasted = 2;
+    game.combo = 2;
+    game.comboUntil = game.time + 7;
+    game.messages.push({ text: 'Part plated — bring the rest of the components.', tone: 'info', until: game.time + 30 });
+  } else if (index === 2) {
+    order('glass_dumplings', 31, 52);
+    order('sun_broth', 26, 50);
+    order('ember_noodles', 44, 54);
+    order('cloud_skewers', 18, 47);
     game.pans[0].item = true;
     game.pans[0].itemId = 'emberroot';
-    game.pans[0].since = game.time - 3.5;
+    game.pans[0].since = game.time - 3.6;
     game.pans[1].item = true;
     game.pans[1].itemId = 'sunpetal';
-    game.pans[1].since = game.time - 1.2;
+    game.pans[1].since = game.time - 1.1;
     game.plating.items = [
       { id: 'emberroot', quality: 'perfect' },
       { id: 'glasspea', quality: 'ok' },
@@ -282,37 +310,9 @@ function seedShot(index) {
     game.wasted = 1;
     game.combo = 3;
     game.comboUntil = game.time + 6;
-    game.messages.push({ text: 'Glasspea Dumplings served — +23  (plated quickly, 3x streak)', tone: 'good', until: game.time + 30 });
-  } else if (index === 2) {
-    order('glass_dumplings', 31, 52);
-    order('sun_broth', 26, 50);
-    order('ember_noodles', 44, 54);
-    order('cloud_skewers', 18, 47);
-    game.pans[0].item = true;
-    game.pans[0].itemId = 'cloudcap';
-    game.pans[0].since = game.time - 2.8;
-    game.pans[1].item = true;
-    game.pans[1].itemId = 'emberroot';
-    game.pans[1].since = game.time - 0.7;
-    game.plating.items = [{ id: 'glasspea', quality: 'perfect' }];
-    game.plating.dish = null;
-    game.readyPlates = ['ember_noodles'];
-    chef.x = 946;
-    chef.y = 522;
-    chef.facing = 'left';
-    chef.carry = [
-      { kind: 'cooked', id: 'cloudcap', quality: 'perfect' },
-      { kind: 'cooked', id: 'sunpetal', quality: 'ok' },
-    ];
-    chef.action = { kind: 'plate', until: game.time + 30, station: 'plating' };
-    game.coins = 132;
-    game.served = 9;
-    game.wasted = 2;
-    game.combo = 2;
-    game.comboUntil = game.time + 7;
     game.time = 118;
     game.timeLeft = NIGHT_SECONDS - game.time;
-    game.messages.push({ text: 'Part plated — bring the rest of the components.', tone: 'info', until: game.time + 30 });
+    game.messages.push({ text: 'Glasspea Dumplings served — +23  (plated quickly, 3x streak)', tone: 'good', until: game.time + 30 });
   } else if (index === 3) {
     order('cloud_skewers', 21, 50);
     order('ember_noodles', 27, 52);

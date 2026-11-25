@@ -500,11 +500,11 @@ function drawPlating(ctx, station, game, time) {
   // Assembly plate, where cooked parts wait for the rest of their dish.
   const ax = station.x + station.w / 2 + 24;
   const ay = station.y + 60;
-  drawPlate(ctx, ax, ay, 44);
+  drawPlate(ctx, ax, ay, 48);
   if (game.plating.items.length) {
-    drawPartialPlate(ctx, game.plating.items.map((item) => item.id), ax, ay - 6, 48, time);
+    drawPartialPlate(ctx, game.plating.items.map((item) => item.id), ax, ay - 6, 54, time);
   } else if (game.plating.dish) {
-    drawDish(ctx, game.plating.dish.recipeId, ax, ay - 6, 44, time, { steam: true });
+    drawDish(ctx, game.plating.dish.recipeId, ax, ay - 6, 50, time, { steam: true });
   }
 
   label(ctx, 'PLATING', station.x + station.w / 2, station.y + station.h + 14, {
@@ -576,12 +576,12 @@ function drawPass(ctx, station, game, time) {
   ctx.stroke();
 
   // Plates waiting under the heat lamp, one carrying a finished dish.
-  drawPlate(ctx, station.x + 32, station.y + 40, 30);
-  drawPlate(ctx, station.x + 84, station.y + 40, 30);
+  drawPlate(ctx, station.x + 32, station.y + 40, 33);
+  drawPlate(ctx, station.x + 84, station.y + 40, 33);
   const ready = game.readyPlates ?? [];
   ready.forEach((recipeId, index) => {
-    if (index === 0) drawDish(ctx, recipeId, station.x + 84, station.y + 36, 32, time, { steam: true });
-    if (index === 1) drawDish(ctx, recipeId, station.x + 32, station.y + 36, 32, time, {});
+    if (index === 0) drawDish(ctx, recipeId, station.x + 84, station.y + 35, 37, time, { steam: true });
+    if (index === 1) drawDish(ctx, recipeId, station.x + 32, station.y + 35, 37, time, {});
   });
 
   ctx.fillStyle = '#1d1512';

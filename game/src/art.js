@@ -483,7 +483,7 @@ export function drawChef(ctx, chef, time) {
   const flip = facing === 'left' ? -1 : 1;
   ctx.save();
   ctx.translate(x, y + bob);
-  ctx.scale(1.34, 1.34);
+  ctx.scale(1.46, 1.46);
 
   // Shadow.
   ctx.fillStyle = 'rgba(0, 0, 0, 0.32)';
@@ -655,7 +655,7 @@ export function drawTicket(ctx, order, x, y, w, h, remaining, time) {
   // Dish name, wrapped to two lines if needed.
   const words = recipe.name.split(' ');
   ctx.fillStyle = PALETTE.ink;
-  ctx.font = '700 15px "Trebuchet MS", "Gill Sans", sans-serif';
+  ctx.font = '700 16px "Trebuchet MS", "Gill Sans", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   if (words.length > 2) {
@@ -670,13 +670,19 @@ export function drawTicket(ctx, order, x, y, w, h, remaining, time) {
   const spacing = Math.min(30, (w - 20) / items.length);
   const startX = w / 2 - ((items.length - 1) * spacing) / 2;
   items.forEach((id, index) => {
-    drawIngredient(ctx, id, startX + index * spacing, 78, 15, { cooked: false });
+    drawIngredient(ctx, id, startX + index * spacing, 78, 17, { cooked: false });
     ctx.strokeStyle = 'rgba(120, 92, 60, 0.35)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.arc(startX + index * spacing, 78, 13, 0, Math.PI * 2);
+    ctx.arc(startX + index * spacing, 78, 14, 0, Math.PI * 2);
     ctx.stroke();
   });
+
+  // What the ticket pays, small and brass in the corner.
+  ctx.fillStyle = 'rgba(176, 126, 42, 0.16)';
+  roundRect(ctx, w - 46, 8, 38, 18, 9);
+  ctx.fill();
+  label(ctx, '+' + order.value, w - 27, 17, { size: 11, weight: '800', color: '#8a5f1c' });
 
   // Patience bar with the seconds left.
   const barW = w - 24;
